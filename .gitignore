@@ -1,0 +1,124 @@
+# ─────────────────────────────────────────────
+# Data — never commit any of this
+# ─────────────────────────────────────────────
+data/raw/
+data/bronze/
+data/silver/
+data/gold/
+data/quarantine/
+data/*.parquet
+data/*.csv
+data/*.duckdb
+data/*.duckdb.wal
+
+# Keep the data/ folder structure visible to collaborators
+!data/.gitkeep
+!data/README.md
+
+# ─────────────────────────────────────────────
+# Secrets & config
+# ─────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+secrets/
+credentials.json
+
+# ─────────────────────────────────────────────
+# Python
+# ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+*.egg
+build/
+dist/
+develop-eggs/
+.eggs/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+ENV/
+
+# ─────────────────────────────────────────────
+# Jupyter / notebooks
+# ─────────────────────────────────────────────
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+.jupyter/
+
+# ─────────────────────────────────────────────
+# ML / model artifacts
+# ─────────────────────────────────────────────
+models/
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.gguf
+*.onnx
+.cache/
+huggingface/
+~/.cache/huggingface/
+
+# vLLM logs
+vllm.log
+vllm_*.log
+nohup.out
+
+# ─────────────────────────────────────────────
+# Logs & temp files
+# ─────────────────────────────────────────────
+logs/
+*.log
+*.tmp
+tmp/
+temp/
+
+# ─────────────────────────────────────────────
+# Testing & coverage
+# ─────────────────────────────────────────────
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.hypothesis/
+coverage.xml
+*.cover
+
+# ─────────────────────────────────────────────
+# IDE / editor
+# ─────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ─────────────────────────────────────────────
+# Streamlit (when you build the dashboard)
+# ─────────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ─────────────────────────────────────────────
+# Misc large/generated files
+# ─────────────────────────────────────────────
+*.zip
+*.tar
+*.tar.gz
+*.7z
