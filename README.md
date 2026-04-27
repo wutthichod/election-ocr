@@ -26,7 +26,7 @@ EOF
 
 mkdir -p data/raw/5_18
 
-# Put your PDFs in data/raw/5_18/*.pdf
+Put your PDFs in data/raw/5_18/*.pdf
 
 
 # 4. Run pipeline (30-60 min total)
