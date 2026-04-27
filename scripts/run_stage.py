@@ -1,4 +1,11 @@
 # scripts/run_stage.py
+import sys
+from pathlib import Path
+
+# Add src/ to Python's search path
+project_root = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(project_root / "src"))
+
 import typer
 import asyncio
 from election_ocr.logging import setup_logging

@@ -18,9 +18,10 @@ class Settings(BaseSettings):
     image_format: str = "PNG"
 
     # OCR endpoint
-    vllm_url: str = "http://localhost:8000/v1"
-    ocr_model: str = "typhoon-ocr-1-5"
-    ocr_concurrency: int = 8          # tune per GPU: T4=4, A100=12
+    vllm_url: str = "https://api.opentyphoon.ai/v1"
+    ocr_model: str = "typhoon-ocr"
+    ocr_api_key: str = ""
+    ocr_concurrency: int = 8
     ocr_timeout_s: int = 120
     ocr_max_retries: int = 3
 
