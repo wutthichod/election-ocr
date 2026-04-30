@@ -1,16 +1,17 @@
-# src/election_ocr/schemas/form_518.py
+# src/election_ocr/schemas/form_partylist.py
 from pydantic import BaseModel, Field
 from datetime import date
 from typing import Optional
 
-class Candidate(BaseModel):
-    number: int = Field(..., ge=1, le=30)
+
+class PartyVote(BaseModel):
+    number: int = Field(..., ge=1)
     name: str
-    party: str
     votes_digit: int = Field(..., ge=0)
     votes_thai_word: str
 
-class Form518(BaseModel):
+
+class FormPartylist(BaseModel):
     # Provenance
     source_sha256: str
     source_pages: list[int]
@@ -37,8 +38,8 @@ class Form518(BaseModel):
     ballots_no_vote: int = Field(..., ge=0)
     ballots_remaining: int = Field(..., ge=0)
 
-    # Section 3
-    candidates: list[Candidate]
+    # Section 3 — one row per party (not individual candidate)
+    parties: list[PartyVote]
     total_votes: int
 
     # Extraction metadata

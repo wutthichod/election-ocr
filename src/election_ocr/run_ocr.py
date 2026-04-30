@@ -38,12 +38,13 @@ async def ocr_batch():
                 "status": "ok"
             }
         except Exception as e:
-            log.error("ocr failed", sha=row.sha256[:12], page=row.page_num, error=str(e))
+            log.error("ocr failed", sha=row.sha256[:12], page=row.page_num,
+                      exc_type=type(e).__name__, error=repr(e))
             return {
                 "sha256": row.sha256,
                 "page_num": row.page_num,
                 "status": "error",
-                "error": str(e)[:200]
+                "error": repr(e)[:200]
             }
     
     try:

@@ -44,8 +44,7 @@ def rasterize_all(workers: int = 4) -> pd.DataFrame:
             all_pages.extend(fut.result())
 
     pages_df = pd.DataFrame(all_pages)
-    # Join back to manifest for station_id / form_type
-    pages_df = pages_df.merge(manifest[["sha256", "station_id", "form_type"]], on="sha256")
+    pages_df = pages_df.merge(manifest[["sha256", "station_id"]], on="sha256")
     pages_df.to_parquet(settings.data_root / "pages.parquet", index=False)
 
     n_cached = pages_df["cached"].sum() if "cached" in pages_df else 0
