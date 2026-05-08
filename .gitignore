@@ -1,5 +1,5 @@
 # ─────────────────────────────────────────────
-# Data — never commit any of this
+# Data — commit curated outputs only
 # ─────────────────────────────────────────────
 data/raw/
 data/bronze/
@@ -10,6 +10,13 @@ data/*.parquet
 data/*.csv
 data/*.duckdb
 data/*.duckdb.wal
+
+# Allow exported outputs to be versioned
+!data/output/
+!data/output/**
+
+# Keep large generated archives in output ignored
+data/output/*.zip
 
 # Keep the data/ folder structure visible to collaborators
 !data/.gitkeep

@@ -1,0 +1,121 @@
+.stApp {
+  background: #0d1b34;
+  color: #f5f8ff;
+  font-family: "Sarabun", "Avenir Next", "Noto Sans Thai", sans-serif;
+}
+
+.block-container {
+  max-width: 1560px;
+  padding-top: 3.5rem;
+  padding-bottom: 3rem;
+}
+
+.stApp [data-testid="stMarkdownContainer"] p,
+.stApp [data-testid="stMarkdownContainer"] li,
+.stApp label,
+.stApp .stCaption,
+.stApp .stText,
+.stApp .st-emotion-cache-16txtl3 {
+  color: #eef4ff !important;
+}
+
+div[data-testid="stDeckGlJsonChart"],
+div[data-testid="stExpander"] {
+  background: rgba(14, 31, 60, 0.88);
+  border: 1px solid rgba(132, 164, 255, 0.16);
+  border-radius: 22px;
+  box-shadow: 0 18px 36px rgba(4, 8, 22, 0.28);
+  overflow: hidden;
+}
+
+div[data-testid="stVegaLiteChart"] {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+div[data-testid="stExpander"] {
+  margin-top: 10px;
+}
+
+div[data-testid="stDeckGlJsonChart"],
+div[data-testid="stDeckGlJsonChart"] canvas,
+div[data-testid="stDeckGlJsonChart"] iframe {
+  pointer-events: none !important;
+  touch-action: none !important;
+  cursor: default !important;
+}
+
+.stTabs [data-baseweb="tab-list"] {
+  gap: 10px;
+  background: transparent;
+}
+
+.stTabs [data-baseweb="tab"] {
+  height: auto;
+  padding: 12px 16px 10px;
+  border-radius: 14px 14px 0 0;
+  color: #d8e4ff;
+  background: rgba(18, 38, 73, 0.56);
+  border: 1px solid rgba(132, 164, 255, 0.08);
+}
+
+.stTabs [aria-selected="true"] {
+  background: rgba(33, 59, 106, 0.96) !important;
+  color: #ffffff !important;
+  border-color: rgba(132, 164, 255, 0.2) !important;
+}
+
+.stTabs [data-baseweb="tab-highlight"] {
+  background-color: #9fc2ff !important;
+}
+
+.stExpander summary,
+.stExpander details summary,
+.stExpander label {
+  color: #ffffff !important;
+}
+
+.stDataFrame {
+  border-radius: 18px !important;
+  overflow: hidden;
+}
+
+.stDataFrame [role="grid"],
+.stDataFrame [role="rowgroup"] {
+  background: rgba(14, 31, 60, 0.92) !important;
+  color: #f3f7ff !important;
+}
+
+.stDataFrame [role="columnheader"],
+.stDataFrame [role="gridcell"] {
+  color: #f3f7ff !important;
+  background: rgba(14, 31, 60, 0.92) !important;
+}
+
+.stDownloadButton button,
+.stButton button {
+  border-radius: 14px !important;
+  border: 1px solid rgba(160, 188, 255, 0.2) !important;
+  background: linear-gradient(135deg, #113a8d, #2559ca) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+}
+
+.stCheckbox label,
+.stSlider label {
+  color: #eef4ff !important;
+}
+
+code {
+  color: #ffffff;
+  background: rgba(55, 84, 136, 0.48);
+  padding: 0.12rem 0.35rem;
+  border-radius: 6px;
+}
+
+.tooltip {
+  line-height: 1.45;
+}

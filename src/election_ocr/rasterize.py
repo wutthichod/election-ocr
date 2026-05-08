@@ -19,17 +19,22 @@ def rasterize_one(pdf_path: str, sha256: str, dpi: int) -> list[dict]:
         return [{"sha256": sha256, "page_num": int(p.stem.split("_")[1]),
                  "image_path": str(p), "cached": True} for p in existing]
 
-    try:
-        images = convert_from_path(pdf, dpi=dpi, thread_count=1)
-        rows = []
-        for i, img in enumerate(images, 1):
-            p = out_dir / f"page_{i:02d}.png"
-            img.save(p, "PNG", optimize=True)
-            rows.append({"sha256": sha256, "page_num": i,
-                         "image_path": str(p), "cached": False})
-        return rows
-    except Exception as e:
-        return [{"sha256": sha256, "error": str(e)}]
+    for attempt_dpi in [dpi, max(150, dpi // 2)]:
+        try:
+            images = convert_from_path(pdf, dpi=attempt_dpi, thread_count=1)
+            rows = []
+            for i, img in enumerate(images, 1):
+                p = out_dir / f"page_{i:02d}.png"
+                img.save(p, "PNG", optimize=True)
+                rows.append({"sha256": sha256, "page_num": i,
+                             "image_path": str(p), "cached": False})
+            return rows
+        except Exception as e:
+            last_err = str(e)
+            if attempt_dpi == dpi and "decompression bomb" in last_err.lower():
+                continue  # retry at lower DPI
+            return [{"sha256": sha256, "error": last_err}]
+    return [{"sha256": sha256, "error": last_err}]
 
 def rasterize_all(workers: int = 4) -> pd.DataFrame:
     manifest = pd.read_parquet(settings.data_root / "manifest.parquet")

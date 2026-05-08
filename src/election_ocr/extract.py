@@ -35,6 +35,7 @@ Critical rules:
 - Candidate numbers (หมายเลขประจำตัวผู้สมัคร) must be sequential integers.
 - Ignore signatures, scribbles, and struck-through text.
 - election_date: convert Thai Buddhist Era (พ.ศ.) to CE by subtracting 543 (e.g. พ.ศ. 2569 → 2026-02-28).
+- changwat is always ลำปาง — do not read it from the form.
 - Before responding, verify: sum of all candidate votes_digit == ballots_valid == total_votes. If they don't match, recount and correct before returning JSON.
 
 OUTPUT FORMAT — respond with JSON using EXACTLY these field names:
@@ -55,6 +56,7 @@ Critical rules:
 - Candidate numbers (หมายเลขประจำตัวผู้สมัคร) must be sequential integers.
 - Ignore signatures, scribbles, and struck-through text.
 - election_date: convert Thai Buddhist Era (พ.ศ.) to CE by subtracting 543 (e.g. พ.ศ. 2569 → 2026-02-28).
+- changwat is always ลำปาง — do not read it from the form.
 - Before responding, verify: sum of all candidate votes_digit == ballots_valid == total_votes. If they don't match, recount and correct before returning JSON.
 
 OUTPUT FORMAT — respond with JSON using EXACTLY these field names:
@@ -75,6 +77,7 @@ Critical rules:
 - Party numbers (หมายเลขพรรค) must be sequential integers.
 - Ignore signatures, scribbles, and struck-through text.
 - election_date: convert Thai Buddhist Era (พ.ศ.) to CE by subtracting 543 (e.g. พ.ศ. 2569 → 2026-02-28).
+- changwat is always ลำปาง — do not read it from the form.
 - Before responding, verify: sum of all party votes_digit == ballots_valid == total_votes. If they don't match, recount and correct before returning JSON.
 
 OUTPUT FORMAT — respond with JSON using EXACTLY these field names:
@@ -95,6 +98,7 @@ Critical rules:
 - Party numbers (หมายเลขพรรค) must be sequential integers.
 - Ignore signatures, scribbles, and struck-through text.
 - election_date: convert Thai Buddhist Era (พ.ศ.) to CE by subtracting 543 (e.g. พ.ศ. 2569 → 2026-02-28).
+- changwat is always ลำปาง — do not read it from the form.
 - Before responding, verify: sum of all party votes_digit == ballots_valid == total_votes. If they don't match, recount and correct before returning JSON.
 
 OUTPUT FORMAT — respond with JSON using EXACTLY these field names:

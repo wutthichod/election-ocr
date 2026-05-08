@@ -1,0 +1,3 @@
+streamlit>=1.45
+pydeck>=0.9.1
+pandas>=2.2

@@ -34,6 +34,10 @@ def load():
     setup_logging(); store.load_to_duckdb()
 
 @app.command()
+def export_csvs():
+    setup_logging(); store.export_csvs()
+
+@app.command()
 def all():
     """Run the full pipeline end to end."""
     setup_logging()
