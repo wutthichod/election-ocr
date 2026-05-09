@@ -5,6 +5,7 @@ import hashlib
 import json
 import math
 import re
+import unicodedata
 from collections import defaultdict
 from dataclasses import dataclass
 from difflib import SequenceMatcher
@@ -19,8 +20,8 @@ import pydeck as pdk
 import streamlit as st
 
 
-ROOT = Path(__file__).resolve().parents[1]
-OUTPUT_DIR = ROOT / "data" / "output"
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+ANALYSIS_DIR = PROJECT_ROOT / "data" / "analysis_exports"
 VIZ_DIR = Path(__file__).resolve().parent
 CACHE_DIR = VIZ_DIR / "cache"
 BOUNDARY_CACHE = CACHE_DIR / "lampang_tambon_boundaries.geojson"
@@ -47,6 +48,9 @@ FIXED_COLUMNS = {
     "บัตรเสีย",
     "บัตรไม่เลือก",
 }
+COLUMN_ALIASES = {
+    "จํานวนหน่วย": "จำนวนหน่วย",
+}
 DATASET_CONFIG = {
     "constituency": {
         "label": "สส.เขต",
@@ -68,8 +72,8 @@ DATASET_CONFIG = {
     },
 }
 LAST_ELECTION_FILES = {
-    "constituency": OUTPUT_DIR / "last_election_constituency_scores.csv",
-    "party_list": OUTPUT_DIR / "last_election_party_list_scores.csv",
+    "constituency": ANALYSIS_DIR / "last_election_constituency_scores.csv",
+    "party_list": ANALYSIS_DIR / "last_election_party_list_scores.csv",
 }
 PARTY_ALIAS_MAP = {
     "ก้าวไกล": "ประชาชน",
@@ -249,8 +253,14 @@ def inject_styles() -> None:
 
 @st.cache_data(show_spinner=False)
 def load_tambon_dataset(dataset_key: str) -> tuple[pd.DataFrame, list[str]]:
-    path = OUTPUT_DIR / DATASET_CONFIG[dataset_key]["tambon_csv"]
+    path = ANALYSIS_DIR / DATASET_CONFIG[dataset_key]["tambon_csv"]
     df = pd.read_csv(path)
+    df = df.rename(
+        columns=lambda value: COLUMN_ALIASES.get(
+            unicodedata.normalize("NFC", str(value)),
+            unicodedata.normalize("NFC", str(value)),
+        )
+    )
     vote_cols = [col for col in df.columns if col not in FIXED_COLUMNS]
 
     numeric_cols = [

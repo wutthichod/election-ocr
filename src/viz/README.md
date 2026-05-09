@@ -1,6 +1,6 @@
 # Tambon Winner Map
 
-This folder contains a Streamlit + pydeck app that maps the constituency winner in each Lampang tambon using the CSV exports in `data/output/`.
+This folder contains a Streamlit + pydeck app that maps the constituency winner in each Lampang tambon using the CSV exports in `data/analysis_exports/`.
 
 ## Files
 
@@ -11,13 +11,13 @@ This folder contains a Streamlit + pydeck app that maps the constituency winner 
 ## Run
 
 ```bash
-python -m pip install -r viz/requirements.txt
-streamlit run viz/app.py
+python -m pip install -r src/viz/requirements.txt
+streamlit run src/viz/app.py
 ```
 
 ## Boundary Source
 
-The app fetches Lampang tambon polygons from the public ArcGIS FeatureServer for Thailand subdistrict boundaries and caches the GeoJSON in `viz/cache/lampang_tambon_boundaries.geojson` after the first successful run.
+The app fetches Lampang tambon polygons from the public ArcGIS FeatureServer for Thailand subdistrict boundaries and caches the GeoJSON in `src/viz/cache/lampang_tambon_boundaries.geojson` after the first successful run.
 
 Source used in the app:
 
@@ -26,7 +26,7 @@ Source used in the app:
 
 ## OCR Name Overrides
 
-If some OCR names do not fuzzy-match correctly, add rows to `viz/tambon_name_overrides.csv`:
+If some OCR names do not fuzzy-match correctly, add rows to `src/viz/tambon_name_overrides.csv`:
 
 ```csv
 raw_amphoe,raw_tambon,official_amphoe,official_tambon
